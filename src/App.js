@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+
 import './App.css';
+import LandingPage from './Componets/LandingPage';
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import UserLogin from './Componets/UserLogin';
+import AdminLogin from './Componets/AdminLogin';
+import AdminSignUp from './Componets/AdminSignUp';
+import AdminHomePage from  './Componets/AdminHomePage';
+import Error from './Componets/Error';
+import UserHomePage from './Componets/UserHomaPage';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<LandingPage/>}/>
+      <Route path='/*' element={<Error/>}/>
+      <Route path='/userlogin' element={<UserLogin/>}/>
+      <Route path='/userhomepage/*' element={<UserHomePage/>}/>  /// sir had putted /*
+      <Route path='/adminlogin' element={<AdminLogin/>}/>
+      <Route path='/adminsignup' element={<AdminSignUp/>}/>
+      <Route path='/adminhomepage/*' element={<AdminHomePage/>}/>
+      
+    </Routes>
+    </BrowserRouter>
+ 
     </div>
   );
 }
